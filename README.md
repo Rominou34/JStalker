@@ -30,10 +30,19 @@ will output
 > Called by function testFunc()
 - obj.id changed: 5 -> 12
 ```
+#### The first parameter obj
 
-#### `obj.watch(id)`
+All functions have the same first parameter `obj` in their declarations / calls. It names the obj containing the variable you want to watch ( you can put anything you want it's not important, it's just used to ouput `obj.variable` in the console so if you put `somethingSilly` it will output `somethingSilly.variable` )
 
-This function will watch the specified variable from the object and notify you of each change.
+### `obj.watch(obj, var)`
+
+
+**Parameters**
+
+* `obj`: [See here](#the-first-parameter-obj)
+* `var`: The variable you want to stalk
+
+This function will output a message in the console each time the value of the specified variable changes
 
 **Example**
 
@@ -51,4 +60,56 @@ will output
 - obj.val1 changed: 5 -> 6
 ```
 
-### `obj.isEqual()`
+### `obj.isEqual(obj, var, val)`
+
+**Parameters**
+
+* `obj`: [See here](#the-first-parameter-obj)
+* `var`: The variable you want to stalk
+* `val`: The triggering value
+
+The function will output a message in the console when the specified variable is equal to the given value
+
+**Example**
+
+```js
+var obj = {var: 1, msg: 'Hi'};
+obj.isEqual('obj','msg','Hello world');
+obj.msg = 'Hello guys';
+obj.msg = 'Hello world'; // Will trigger the output
+obj.msg = 'Hi bro';
+```
+
+will output
+
+```
+>>> JStalker.isEqual()
+- obj.msg is equal to Hello world
+```
+
+### `obj.isNull(obj, var)`
+
+**Parameters**
+
+* `obj`: [See here](#the-first-parameter-obj)
+* `var`: The variable you want to stalk
+
+The function will output a message in the console when the specified variable is equal to `undefined` or `null`
+
+**Example**
+
+```js
+var obj = {n: 5};
+obj.isNull('obj','n');
+obj.n = null; // Will trigger a message
+obj.n = undefined; // Will also trigger a message
+```
+
+will output
+
+```
+>>> JStalker.isNull()
+- obj.n is null
+>>> JStalker.isNull()
+- obj.n is undefined
+```

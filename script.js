@@ -10,13 +10,13 @@ function testFunc() {
 testFunc();
 
 console.log("\n+++++ ISEQUAL +++++");
-obj.isEqual('m','Hello world');
+obj.isEqual('obj','m','Hello world');
 obj.m = 'Hello guys';
 obj.m = 'Hello world';
 obj.m = 'Hi bro';
 
 console.log("\n+++++ CHECKNULL +++++");
-obj.checkNull('n');
+obj.isNull('obj','n');
 obj.n = null;
 obj.n = undefined;
 

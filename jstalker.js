@@ -58,9 +58,10 @@ if (!Object.prototype.isEqual) {
 		  enumerable: false
 		, configurable: true
 		, writable: false
-		, value: function (prop, ve) {
+		, value: function (ob, prop, ve) {
 			var
-			  oldval = this[prop]
+				obj = ob
+			, oldval = this[prop]
 			, newval = oldval
       , verif = ve
 			, getter = function () {
@@ -74,7 +75,7 @@ if (!Object.prototype.isEqual) {
           if(arguments.callee.caller != null) {
             console.log("> Called by function " + arguments.callee.caller.name);
           }
-          console.log("- Variable " + prop + " is equal to " + verif);
+          console.log("- " + obj + "." + prop + " is equal to " + verif);
         }
 			}
 			;
@@ -96,13 +97,14 @@ if (!Object.prototype.isEqual) {
 * Writes in console log each time a variable becomes null / undefined
 */
 if (!Object.prototype.checkNull) {
-	Object.defineProperty(Object.prototype, "checkNull", {
+	Object.defineProperty(Object.prototype, "isNull", {
 		  enumerable: false
 		, configurable: true
 		, writable: false
-		, value: function (prop) {
+		, value: function (ob, prop) {
 			var
-			  oldval = this[prop]
+				obj = ob
+			, oldval = this[prop]
 			, newval = oldval
 			, getter = function () {
 				return newval;
@@ -111,11 +113,11 @@ if (!Object.prototype.checkNull) {
 				oldval = newval;
         newval = val;
         if(newval == undefined || newval == null) {
-          console.log(">>> JStalker.checkNull()");
+          console.log(">>> JStalker.isNull()");
           if(arguments.callee.caller != null) {
             console.log("> Called by function " + arguments.callee.caller.name);
           }
-          console.log("- Variable " + prop + " is " + newval);
+          console.log("- " + obj + "." + prop + " is " + newval);
         }
 			}
 			;
