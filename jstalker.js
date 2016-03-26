@@ -143,9 +143,10 @@ if (!Object.prototype.isInRange) {
 		  enumerable: false
 		, configurable: true
 		, writable: false
-		, value: function (prop, mi, ma) {
+		, value: function (ob, prop, mi, ma) {
 			var
-			  oldval = this[prop]
+				obj = ob
+			, oldval = this[prop]
 			, newval = oldval
       , min = mi
       , max = ma
@@ -160,7 +161,7 @@ if (!Object.prototype.isInRange) {
           if(arguments.callee.caller != null) {
             console.log("> Called by function " + arguments.callee.caller.name);
           }
-          console.log("- Variable " + prop + " is between "
+          console.log("- " + obj + "." + prop + " is between "
           + min + " and " + max + " ( Value: " + newval + " )");
         }
 			}
@@ -187,9 +188,10 @@ if (!Object.prototype.isOutOfRange) {
 		  enumerable: false
 		, configurable: true
 		, writable: false
-		, value: function (prop, mi, ma) {
+		, value: function (ob, prop, mi, ma) {
 			var
-			  oldval = this[prop]
+				obj = ob
+			, oldval = this[prop]
 			, newval = oldval
       , min = mi
       , max = ma
@@ -204,7 +206,7 @@ if (!Object.prototype.isOutOfRange) {
           if(arguments.callee.caller != null) {
             console.log("> Called by function " + arguments.callee.caller.name);
           }
-          console.log("- Variable " + prop + " is outside of the range [ "
+          console.log("- " + obj + "." + prop + " is outside of the range [ "
           + min + " - " + max + " ] Value: " + newval);
         }
 			}

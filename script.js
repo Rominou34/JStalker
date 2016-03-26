@@ -15,18 +15,18 @@ obj.m = 'Hello guys';
 obj.m = 'Hello world';
 obj.m = 'Hi bro';
 
-console.log("\n+++++ CHECKNULL +++++");
+console.log("\n+++++ ISNULL +++++");
 obj.isNull('obj','n');
 obj.n = null;
 obj.n = undefined;
 
 console.log("\n+++++ ISINRANGE +++++");
-obj.isInRange('r',10,20);
+obj.isInRange('obj','r',10,20);
 obj.r = 8;
 obj.r = 15;
 
 console.log("\n+++++ ISOUTOFRANGE +++++");
-obj.isOutOfRange('s',10,20);
+obj.isOutOfRange('obj','s',10,20);
 obj.s = 8;
 obj.s = 15;
 obj.s = 22;
