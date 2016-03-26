@@ -18,9 +18,10 @@ if (!Object.prototype.watch) {
 		  enumerable: false
 		, configurable: true
 		, writable: false
-		, value: function (prop) {
+		, value: function (ob, prop) {
 			var
-			  oldval = this[prop]
+				obj = ob
+			, oldval = this[prop]
 			, newval = oldval
 			, getter = function () {
 				return newval;
@@ -30,10 +31,9 @@ if (!Object.prototype.watch) {
         newval = val;
         console.log(">>> JStalker.watch()");
         if(arguments.callee.caller != null) {
-          console.log("> Called by function " + arguments.callee.caller.name);
+          console.log("> Called by function " + arguments.callee.caller.name + "()");
         }
-        console.log("- Variable " + prop + " changed");
-        console.log("( Old value: " + oldval + " - New value: " + newval + " )");
+				console.log("- " + obj + '.' + prop + " changed: " + oldval + " -> " + newval);
 			}
 			;
 

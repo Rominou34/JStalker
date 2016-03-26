@@ -2,12 +2,12 @@
 var obj = {id: 5, m: 'Hi', n: undefined, r: 16, s:12};
 
 console.log("+++++ WATCH +++++");
-obj.watch('id');
-var tu = function() {
+obj.watch('obj','id');
+function testFunc() {
 	obj.id = 12;
 	obj.id = 15;
 }
-tu();
+testFunc();
 
 console.log("\n+++++ ISEQUAL +++++");
 obj.isEqual('m','Hello world');
